@@ -2,7 +2,7 @@
     <h1>Business Contacts List</h1>
     <% if(displayName) { %>
     <a href="/contact-add" class="btn btn-primary" role="button">
-        <i class="fas fa-plus-circle"></i> Add a Movie</a>
+        <i class="fas fa-plus-circle"></i> Add a contact</a>
     <% } %>
 
     <div class="row">
@@ -12,11 +12,10 @@
                 <thead class="table-dark">
                     <tr>
                         <th scope="col" class="text-center">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Year</th>
-                        <th scope="col">Director</th>
-                        <th scope="col">Genre</th>
-                        <th scope="col">Runtime</th>
+                        <th scope="col">Fisrt Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Telephone</th>
+                        <th scope="col">email</th>
                         <% if(displayName) { %>
                         <th></th>
                         <th></th>
@@ -32,7 +31,6 @@
                             <td><%= movies[count].year %></td>
                             <td><%= movies[count].director %></td>
                             <td><%= movies[count].genre %></td>
-                            <td><%= movies[count].runtime %></td>
 
                             <% if(displayName) { %>
                             

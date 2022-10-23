@@ -1,19 +1,19 @@
-import movieModel from '../models/movies.js';
+import contactModel from '../models/contacts.js';
 import { UserDisplayName } from '../utils/index.js';
 
 export function DisplayContactsList(req, res, next){
-    movieModel.find(function(err, moviesCollection) {
+    contactModel.find(function(err, contactsCollection) {
         if(err){
             console.error(err);
             res.end(err);
         }
 
-        res.render('index', {title: 'Business Contacts List', page: 'contact/list', movies: moviesCollection, displayName: UserDisplayName(req)});
+        res.render('index', {title: 'Business Contacts List', page: 'contacts/list', contacts: contactsCollection, displayName: UserDisplayName(req)});
     })
 }
 
 export function DisplayContactsAddPage(req, res, next){
-    res.render('index', { title: 'Add Business Contact', page: 'contact/edit', movie: {} , displayName: UserDisplayName(req)});
+    res.render('index', { title: 'Add Business Contact', page: 'contacts/edit', movie: {} , displayName: UserDisplayName(req)});
 }
 
 export function ProcessContactsAddPage(req, res, next){
@@ -45,7 +45,7 @@ export function ProcessContactsEditPage(req, res, next){
             res.end(err);
         }
 
-        res.render('index', { title: 'Edit Business Contacts', page: 'contact/edit', movie: movie, displayName: UserDisplayName(req) });
+        res.render('index', { title: 'Edit Business Contacts', page: 'contacts/edit', movie: movie, displayName: UserDisplayName(req) });
     });    
 }
 
@@ -59,7 +59,6 @@ export function DisplayContactsEditPage(req, res, next){
         year: req.body.year,
         director: req.body.director,
         genre: req.body.genre,
-        runtime: req.body.runtime
     });
 
     movieModel.updateOne({_id: id }, newMovie, (err, movie) => {

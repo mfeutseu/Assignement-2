@@ -7,7 +7,6 @@ const MovieSchema = new Schema({
     year: String, 
     director: String,
     genre: String,
-    runtime: Number
 }, {
     timestamps: true,
     collection: 'movies'
