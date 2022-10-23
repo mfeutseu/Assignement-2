@@ -39,13 +39,13 @@ export function ProcessContactsAddPage(req, res, next){
 export function ProcessContactsEditPage(req, res, next){
     let id = req.params.id;
 
-    movieModel.findById(id, (err, movie) => {
+    movieModel.findById(id, (err, contact) => {
         if(err){
             console.error(err);
             res.end(err);
         }
 
-        res.render('index', { title: 'Edit Business Contacts', page: 'contacts/edit', movie: contact, displayName: UserDisplayName(req) });
+        res.render('index', { title: 'Edit Business Contacts', page: 'contacts/edit', contact: contact, displayName: UserDisplayName(req) });
     });    
 }
 
