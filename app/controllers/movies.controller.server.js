@@ -1,22 +1,22 @@
 import movieModel from '../models/movies.js';
 import { UserDisplayName } from '../utils/index.js';
 
-export function DisplayMoviesList(req, res, next){
+export function DisplayContactsList(req, res, next){
     movieModel.find(function(err, moviesCollection) {
         if(err){
             console.error(err);
             res.end(err);
         }
 
-        res.render('index', {title: 'Movie List', page: 'movies/list', movies: moviesCollection, displayName: UserDisplayName(req)});
+        res.render('index', {title: 'Business Contacts List', page: 'contacts/list', movies: moviesCollection, displayName: UserDisplayName(req)});
     })
 }
 
-export function DisplayMoviesAddPage(req, res, next){
-    res.render('index', { title: 'Add Movie', page: 'movies/edit', movie: {} , displayName: UserDisplayName(req)});
+export function DisplayContactsAddPage(req, res, next){
+    res.render('index', { title: 'Add Contact', page: 'contacts/edit', movie: {} , displayName: UserDisplayName(req)});
 }
 
-export function ProcessMoviesAddPage(req, res, next){
+export function ProcessContactsAddPage(req, res, next){
     
     let newMovie = movieModel({
         name: req.body.name,
@@ -32,11 +32,11 @@ export function ProcessMoviesAddPage(req, res, next){
             res.end(err);
         };
 
-        res.redirect('/movie-list')
+        res.redirect('/contact-list')
     } )
 }
 
-export function DisplayMoviesEditPage(req, res, next){
+export function ProcessContactsEditPage(req, res, next){
     let id = req.params.id;
 
     movieModel.findById(id, (err, movie) => {
@@ -45,11 +45,11 @@ export function DisplayMoviesEditPage(req, res, next){
             res.end(err);
         }
 
-        res.render('index', { title: 'Edit Movie', page: 'movies/edit', movie: movie, displayName: UserDisplayName(req) });
+        res.render('index', { title: 'Edit Business Contacts', page: 'contacts/edit', movie: movie, displayName: UserDisplayName(req) });
     });    
 }
 
-export function ProcessMoviesEditPage(req, res, next){
+export function DisplayContactsEditPage(req, res, next){
 
     let id = req.params.id;
     
@@ -68,11 +68,11 @@ export function ProcessMoviesEditPage(req, res, next){
             res.end(err);
         };
 
-        res.redirect('/movie-list')
+        res.redirect('/contact-list')
     } )
 }
 
-export function ProcessMoviesDelete(req, res, next){
+export function ProcessContactsDelete(req, res, next){
     let id = req.params.id;
 
     movieModel.remove({_id: id}, (err) => {
@@ -81,7 +81,7 @@ export function ProcessMoviesDelete(req, res, next){
             res.end(err);
         }
 
-        res.redirect('/movie-list');
+        res.redirect('/contact-list');
     })
 }
 
