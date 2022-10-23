@@ -13,7 +13,7 @@ export function DisplayContactsList(req, res, next){
 }
 
 export function DisplayContactsAddPage(req, res, next){
-    res.render('index', { title: 'Add Contact', page: 'contacts/edit', movie: {} , displayName: UserDisplayName(req)});
+    res.render('index', { title: 'Add Business Contact', page: 'contacts/edit', movie: {} , displayName: UserDisplayName(req)});
 }
 
 export function ProcessContactsAddPage(req, res, next){
@@ -45,7 +45,7 @@ export function ProcessContactsEditPage(req, res, next){
             res.end(err);
         }
 
-        res.render('index', { title: 'Edit Business Contacts', page: 'contacts/edit', movie: movie, displayName: UserDisplayName(req) });
+        res.render('index', { title: 'Edit Business Contacts', page: 'contacts/edit', movie: contact, displayName: UserDisplayName(req) });
     });    
 }
 
